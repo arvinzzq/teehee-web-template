@@ -1,1 +1,1 @@
-# bloom-web-template
+# teehee-web-template
