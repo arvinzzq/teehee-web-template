@@ -14,7 +14,7 @@ export default class UserController extends Controller {
   @route.get('/user/info')
   async getUserInfo(ctx) {
     try {
-      console.log('get user info ~');
+      ctx.render('index');
     } catch(e) {
       console.log(e);
     }
