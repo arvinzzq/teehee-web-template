@@ -1,0 +1,32 @@
+{
+  "name": "teehee-web-template",
+  "version": "0.0.1",
+  "description": "teehee web template",
+  "main": "index.js",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.17.5",
+    "teehee": "^0.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start:server": "nodemon --exec 'teehee start' -w server -e 'js json' server/app.js | bunyan --time local -o short"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zz1211/teehee-web-template.git"
+  },
+  "keywords": [
+    "teehee",
+    "web",
+    "template"
+  ],
+  "author": "zhongzhiqiang <zqzhong1211@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zz1211/teehee-web-template/issues"
+  },
+  "homepage": "https://github.com/zz1211/teehee-web-template#readme"
+}
