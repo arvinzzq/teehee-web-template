@@ -15,6 +15,25 @@ export default class LoginController extends Controller {
   async getLoginHtml(ctx) {
     try {
       ctx.body = 'hello login ~>';
+      // Only for testing
+      ctx.session.user = {
+        name: 'zhongzhiqiang',
+        slogan: '嘿嘿嘿'
+      };
+      const { redirect } = ctx.query;
+      if (redirect) {
+        ctx.redirect(redirect);
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  }
+
+  @route.get('/logout')
+  async logout(ctx) {
+    try {
+      ctx.session = null;
+      // ctx.redirect('/login');
     } catch(e) {
       console.log(e);
     }

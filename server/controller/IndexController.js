@@ -6,11 +6,13 @@ import autobind from 'zeass/lib/helper/autobind'
 @route.controller()
 export default class IndexController extends Controller {
   async httpRequestLog(ctx, next) {
+    console.log('ctx.session.user ---> ', ctx.session.user);
     const url = ctx.request.url;
     const method = ctx.request.method;
     const start = new Date();
     await next();
     const end = new Date();
-    this.Logger.info(`[Response] ${method} ${url} ${end.getTime() - start.getTime()}ms`);
+    const status = ctx.response.status;
+    this.Logger.info(`[Response] ${method} ${url} ${status} ${end.getTime() - start.getTime()}ms`);
   }
 }

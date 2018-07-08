@@ -1,11 +1,15 @@
 import Koa from 'koa';
 import routerMiddleware from 'zeass/lib/middleware/router';
 import renderMiddleware from 'zeass/lib/middleware/render';
+import sessionMiddleware from 'zeass/lib/middleware/session';
 import pkgConfig from '../package';
 
 const { name } = pkgConfig;
 const APP_PORT = 8888;
 const app = new Koa();
+
+// Set for session
+app.keys = [name];
 
 app.use(renderMiddleware({
   filters: {
@@ -14,7 +18,8 @@ app.use(renderMiddleware({
     json: JSON.stringify
   }
 }));
-app.use(routerMiddleware.routes())
+app.use(sessionMiddleware());
+app.use(routerMiddleware.routes());
 app.use(routerMiddleware.allowedMethods());
 
 app.listen(APP_PORT, () => {

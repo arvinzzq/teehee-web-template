@@ -1,6 +1,7 @@
 import Controller from 'zeass/lib/base/controller';
 import route from 'zeass/lib/helper/route';
-import autobind from 'zeass/lib/helper/autobind'
+import autobind from 'zeass/lib/helper/autobind';
+import authorize from 'zeass/lib/helper/authorize';
 import UserService from '../service/UserService';
 
 @autobind
@@ -11,6 +12,7 @@ export default class UserController extends Controller {
     this.UserService = new UserService();
   }
 
+  @authorize
   @route.get('/user/info')
   async getUserInfo(ctx) {
     try {
