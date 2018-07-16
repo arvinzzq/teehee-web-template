@@ -8,10 +8,10 @@ export default class IndexController extends Controller {
   async httpRequestLog(ctx, next) {
     const url = ctx.request.url;
     const method = ctx.request.method;
-    const start = new Date();
+    const startTime = Date.now();
     await next();
-    const end = new Date();
+    const endTime = Date.now();
     const status = ctx.response.status;
-    this.Logger.info(`[Response] ${method} ${url} ${status} ${end.getTime() - start.getTime()}ms`);
+    this.Logger.info(`[Response] ${method} ${url} ${status} ${endTime - startTime}ms`);
   }
 }

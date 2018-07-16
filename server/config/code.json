@@ -1,0 +1,10 @@
+{
+  "SUCCESS": {
+    "code": 0,
+    "message": "ok"
+  },
+  "ERROR": {
+    "code": -1,
+    "message": "未知错误"
+  }
+}
