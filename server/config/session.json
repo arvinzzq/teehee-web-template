@@ -1,8 +1,8 @@
 {
   "cookie": {
     "httpOnly": true,
-    "maxAge": 12096000000,
     "rewrite": true,
+    "maxAge": null,
     "signed": true
   }
 }

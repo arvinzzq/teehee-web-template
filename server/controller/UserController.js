@@ -3,6 +3,7 @@ import route from 'zeass/lib/helper/route';
 import autobind from 'zeass/lib/helper/autobind';
 import authorize from 'zeass/lib/helper/authorize';
 import UserService from '../service/UserService';
+import { csrfSetter, csrfValidator } from '../helper/csrf';
 
 @autobind
 @route.controller()
@@ -13,6 +14,7 @@ export default class UserController extends Controller {
   }
 
   @authorize
+  @csrfSetter
   @route.get('/user/info')
   async getUserInfo(ctx) {
     try {
@@ -22,10 +24,11 @@ export default class UserController extends Controller {
     }
   }
 
+  @csrfValidator()
   @route.get('/user/department/id')
   async getUserDeparmentId(ctx) {
     try {
-      console.log('get user info idididd ~');
+      ctx.json(ctx.CODE.SUCCESS, 'heiheihei');
     } catch(e) {
       console.log(e);
     }

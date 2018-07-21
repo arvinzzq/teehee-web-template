@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: ''
     },
-    idDelete: {
+    isDelete: {
       field: 'is_delete',
       type: DataTypes.INTEGER(1),
       allowNull: false,
@@ -76,7 +76,7 @@ module.exports = function(sequelize, DataTypes) {
     },
   
     async deleteRecord(id) {
-      const result = await this.update({
+      const result = await this.update({ isDelete: 1 }, {
         where: {
           id,
           isDelete: 0
@@ -87,3 +87,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 };
+
+
+
+
+
+
+
+

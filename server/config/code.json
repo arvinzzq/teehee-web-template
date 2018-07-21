@@ -6,5 +6,9 @@
   "ERROR": {
     "code": -1,
     "message": "未知错误"
+  },
+  "INVALID_CSRF_TOEKN": {
+    "code": 403,
+    "message": "Invalid CSRF token"
   }
 }

@@ -47,7 +47,7 @@ export default class UserController extends Controller {
     }
   }
 
-  @route.delete('/delete/:id')
+  @route.delete('/delete/:id(\\d+)')
   async deleteRecord(ctx) {
     const { id } = ctx.params;
     try {
