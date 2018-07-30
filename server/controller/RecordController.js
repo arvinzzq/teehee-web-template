@@ -4,14 +4,14 @@ import autobind from 'zeass/lib/helper/autobind';
 import RecordService from '../service/RecordService';
 
 @autobind
-@route.controller('/record')
+// @route.controller('/record')
 export default class UserController extends Controller {
   constructor() {
     super();
     this.RecordService = new RecordService();
   }
 
-  @route.post('/create')
+  // @route.post('/create')
   async createRecord(ctx) {
     const { title, content, url } = ctx.request.body;
     try {
@@ -23,7 +23,7 @@ export default class UserController extends Controller {
     }
   }
 
-  @route.get('/:id(\\d+)')
+  // @route.get('/:id(\\d+)')
   async findRecordById(ctx) {
     const { id } = ctx.params;
     try {
@@ -35,7 +35,7 @@ export default class UserController extends Controller {
     }
   }
 
-  @route.get('/list')
+  // @route.get('/list')
   async findRecords(ctx) {
     const { page, pageSize } = ctx.query;
     try {
@@ -47,7 +47,7 @@ export default class UserController extends Controller {
     }
   }
 
-  @route.delete('/delete/:id(\\d+)')
+  // @route.delete('/delete/:id(\\d+)')
   async deleteRecord(ctx) {
     const { id } = ctx.params;
     try {

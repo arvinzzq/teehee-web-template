@@ -5,6 +5,18 @@ import autobind from 'zeass/lib/helper/autobind'
 @autobind
 @route.controller()
 export default class IndexController extends Controller {
+
+  @route.get('/')
+  @route.get('/home')
+  @route.get('/blog')
+  async getIndexHtml(ctx) {
+    try {
+      await ctx.render('index');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async httpRequestLog(ctx, next) {
     const url = ctx.request.url;
     const method = ctx.request.method;

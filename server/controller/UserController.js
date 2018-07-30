@@ -15,7 +15,7 @@ export default class UserController extends Controller {
 
   @authorize
   @csrfSetter
-  @route.get('/user/info')
+  // @route.get('/user/info')
   async getUserInfo(ctx) {
     try {
       ctx.render('index');
@@ -25,7 +25,7 @@ export default class UserController extends Controller {
   }
 
   @csrfValidator()
-  @route.get('/user/department/id')
+  // @route.get('/user/department/id')
   async getUserDeparmentId(ctx) {
     try {
       ctx.json(ctx.CODE.SUCCESS, 'heiheihei');
@@ -34,7 +34,7 @@ export default class UserController extends Controller {
     }
   }
 
-  @route.post('/user/:id')
+  // @route.post('/user/:id')
   async createUser(ctx) {
     try {
       console.log('get user info ~');

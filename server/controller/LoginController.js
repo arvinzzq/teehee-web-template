@@ -16,7 +16,7 @@ export default class LoginController extends Controller {
     this.UserService = new UserService();
   }
 
-  @route.get('/login')
+  // @route.get('/login')
   async getLoginHtml(ctx) {
     try {
       ctx.body = 'hello login ~>';
@@ -34,7 +34,7 @@ export default class LoginController extends Controller {
     }
   }
 
-  @route.get('/logout')
+  // @route.get('/logout')
   async logout(ctx) {
     try {
       ctx.session = null;
@@ -44,7 +44,7 @@ export default class LoginController extends Controller {
     }
   }
 
-  @route.get('/test1')
+  // @route.get('/test1')
   @anyPermissionAsync('admin')
   async logout(ctx) {
     try {
