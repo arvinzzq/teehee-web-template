@@ -6,9 +6,11 @@ import Blog from 'pages/blog/containers/Blog';
 
 const Entry = () => (
   <Router>
-    <Redirect from="/" to="/home" />
-    <Route exact path="/home" component={Home} />
-    <Route exact path="/blog" component={Blog} />
+    <div>
+      <Redirect from="/" to="/home" />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/blog" component={Blog} />
+    </div>
   </Router>
 );
 

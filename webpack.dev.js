@@ -1,8 +1,9 @@
-const path = require('path')
-const merge = require('webpack-merge')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const commonConfig = require('./webpack.common.js')
+const path = require('path');
+const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HashPlugin = require('./HashPlugin');
+const commonConfig = require('./webpack.common.js');
 
 module.exports = merge(commonConfig, {
   entry: {
@@ -10,13 +11,14 @@ module.exports = merge(commonConfig, {
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'static')
+    path: path.resolve(__dirname, 'build')
   },
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin('static'),
+    new CleanWebpackPlugin('build'),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
-    })
+    }),
+    new HashPlugin()
   ]
-})
+});

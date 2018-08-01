@@ -1,7 +1,8 @@
-const path = require('path')
-const merge = require('webpack-merge')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HashPlugin = require('./HashPlugin');
 const commonConfig = require('./webpack.common.js')
 
 module.exports = merge(commonConfig, {
@@ -10,12 +11,13 @@ module.exports = merge(commonConfig, {
   },
   output: {
     filename: 'js/[name]_[chunkhash].js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'publish')
   },
   plugins: [
-    new CleanWebpackPlugin('build'),
+    new CleanWebpackPlugin('publish'),
     new MiniCssExtractPlugin({
-      filename: 'css/[name]__[contenthash].css'
-    })
+      filename: 'css/[name]_[contenthash].css'
+    }),
+    new HashPlugin()
   ]
-})
+});

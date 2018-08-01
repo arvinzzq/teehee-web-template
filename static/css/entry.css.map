@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./client/pages/home/components/footer.scss"],"names":[],"mappings":"AAAA;AACA,cAAc","file":"css/entry.css","sourcesContent":[".footer {\n  color: #e00; }\n"],"sourceRoot":""}

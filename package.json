@@ -3,11 +3,21 @@
   "version": "0.0.1",
   "description": "teehee web template",
   "main": "index.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development npm run start:dev:server",
+    "start:dev:server": "nodemon --exec 'teehee start' -w server -e 'js json' server/app.js | bunyan --time local -o short",
+    "webpack:dev": "webpack --config webpack.dev.js --mode development --watch",
+    "start:prod:server": "start production mode server side",
+    "webpack:prod": "webpack --config webpack.prod.js --mode production",
+    "publish:client": "publish client resource to cdn",
+    "publish:server": "compile server side code"
+  },
   "dependencies": {
     "bunyan": "^1.8.12",
     "ip": "^1.1.5",
     "koa": "^2.5.1",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "nodemon": "^1.17.5"
   },
   "devDependencies": {
@@ -31,16 +41,6 @@
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
     "webpack-merge": "^4.1.3"
-  },
-  "scripts": {
-    "start:dev": "NODE_ENV=development && npm run start:dev:server & npm run start:dev:client",
-    "start:dev:server": "nodemon --exec 'teehee start' -w server -e 'js json' server/app.js | bunyan --time local -o short",
-    "start:dev:client": "browser-sync start -p $npm_package_config_development_host:$npm_package_config_development_port --port $npm_package_config_bsport -f 'static/**/*.*' 'server/view/**/*.njk' --no-open",
-    "webpack:dev": "webpack --config webpack.dev.js --mode development --watch",
-    "start:prod:server": "start production mode server side",
-    "webpack:prod": "webpack --config webpack.prod.js --mode production",
-    "publish:client": "publish client resource to cdn",
-    "publish:server": "compile server side code"
   },
   "config": {
     "baport": 8000,

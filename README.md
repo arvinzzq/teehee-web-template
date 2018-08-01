@@ -2,9 +2,13 @@
 
 ### Frontend side
 * client -> raw fred resource.
-* static -> compiled local fred resource. 
-* build -> published fred resource (uploaded to cdn).
+* build -> compiled local fred resource. 
+* publish -> published fred resource (uploaded to cdn).
 
 ### Server side
 * server -> raw server side code.
-* publish -> compiled server side code for production mode.
+* server_dist -> compiled server side code for production mode.
+
+### Static folder
+
+* static

@@ -1,5 +1,7 @@
 import Koa from 'koa';
+import path from 'path';
 import ip from 'ip';
+import koaStatic from 'koa-static';
 import routerMiddleware from 'zeass/lib/middleware/router';
 import renderMiddleware from 'zeass/lib/middleware/render';
 import stateMiddleware from 'zeass/lib/middleware/state';
@@ -14,13 +16,13 @@ import errorConfig from './config/error.json';
 
 const NODE_ENV = process.env.NODE_ENV;
 const { name, config } = pkgConfig;
-console.log('NODE_ENV -----> ', NODE_ENV);
-const APP_PORT = config["development"].port;
+const APP_PORT = config[NODE_ENV].port;
 const app = new Koa();
 
 // Set for session
 app.keys = [name];
 
+app.use(koaStatic(process.cwd()));
 app.use(jsonMiddleware);
 app.use(codeMiddleware);
 app.use(bodyMiddleware());
@@ -29,8 +31,8 @@ app.use(stateMiddleware);
 app.use(xssMiddleware({ enableStyle: true }));
 app.use(renderMiddleware({
   filters: {
-    js: name => `/${name}`,
-    css: name => `/${name}`,
+    js: name => `build/${name}`, // filter can change resource addr according to NODE_ENV
+    css: name => `build/${name}`,
     json: JSON.stringify
   }
 }));
