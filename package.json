@@ -18,7 +18,8 @@
     "koa": "^2.5.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "zeass": "0.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

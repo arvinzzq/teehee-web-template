@@ -1,25 +1,32 @@
 const fs = require('fs');
 const path = require('path');
 const pluginName = 'hash-plugin';
+const cwd = process.cwd();
 function HashPlugin(options = {}) {
   this.options = options
 }
 
-// 生成version文件，并且支持根据options参数说明，上传静态资源文件到cdn。
+function collectHashMap(hashMap, asset, separator, pathRelative, reg) {
+  if (reg.test(asset)) {
+    hashMap[asset.split(separator)[0]] = `${pathRelative}/${asset}`;
+  }
+}
+
+// generate version config file
 HashPlugin.prototype.apply = function(compiler) {
-  const { separator = '_' } = this.options;
+  const { separator = '_', outputPath = './server/config'} = this.options;
   compiler.hooks.emit.tap(pluginName, compilation => {
     const { assets, outputOptions} = compilation;
-    console.log('Object.kekek -> ', Object.keys(assets));
-    console.log('relative path -> ', path.relative(__dirname, outputOptions.path));
-    // const hashArray = Object.keys(assets).map(asset => );
-    // console.log('hashArray -> ', hashArray);
     const pathRelative = path.relative(__dirname, outputOptions.path);
-    const hashMap = {};
+    const cssHashMap = {}, jsHashMap = {};
+    const jsReg = /^js\//, cssReg = /^css\//;
     Object.keys(assets).map(asset => {
-      hashMap[asset.split(separator)[0]] = `${pathRelative}/${asset}`;
+      collectHashMap(cssHashMap, asset, separator, pathRelative, cssReg);
+      collectHashMap(jsHashMap, asset, separator, pathRelative, jsReg);
     });
-    console.log('hash map -> ', hashMap);
+    fs.writeFileSync(path.resolve(cwd, outputPath, './css_version.json'), JSON.stringify(cssHashMap, null, 2));
+    fs.writeFileSync(path.resolve(cwd, outputPath, './js_version.json'), JSON.stringify(jsHashMap, null, 2));
+    console.info('---> Version file is generated ~');
   });
 };
 

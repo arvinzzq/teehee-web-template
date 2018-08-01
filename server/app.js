@@ -13,10 +13,13 @@ import xssMiddleware from 'zeass/lib/middleware/xss';
 import errorMiddleware from './middleware/error';
 import pkgConfig from '../package';
 import errorConfig from './config/error.json';
+import JS_CDN from './config/js_version';
+import CSS_CDN from './config/css_version';
 
 const NODE_ENV = process.env.NODE_ENV;
 const { name, config } = pkgConfig;
 const APP_PORT = config[NODE_ENV].port;
+const CDN_DOMAIN = 'https://test.com';
 const app = new Koa();
 
 // Set for session
@@ -31,8 +34,8 @@ app.use(stateMiddleware);
 app.use(xssMiddleware({ enableStyle: true }));
 app.use(renderMiddleware({
   filters: {
-    js: name => `build/${name}`, // filter can change resource addr according to NODE_ENV
-    css: name => `build/${name}`,
+    js: name => NODE_ENV === 'development' ? `build/${name}` : `${CDN_DOMAIN}/${JS_CDN[name.split('.js')[0]]}`,
+    css: name => NODE_ENV === 'development' ? `build/${name}` : `${CDN_DOMAIN}/${CSS_CDN[name.split('.css')[0]]}`,
     json: JSON.stringify
   }
 }));
