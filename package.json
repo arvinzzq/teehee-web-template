@@ -1,7 +1,9 @@
 {
-  "name": "teehee-web-template",
-  "version": "0.0.1",
-  "description": "teehee web template",
+  "name": "{{ name }}",
+  "description": "{{ description }}",
+  "version": "{{ version }}",
+  "author": "{{{ author }}}",
+  "license": "{{ license }}",
   "main": "index.js",
   "scripts": {
     "start:dev": "NODE_ENV=development npm run start:dev:server",
@@ -12,6 +14,19 @@
     "publish:client": "publish client resource to cdn",
     "publish:server": "compile server side code"
   },
+  "keywords": [
+  {{#each keywords}}
+    "{{this}}"{{#if @last}}{{else}},{{/if}}
+  {{/each}}
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zz1211/teehee-web-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zz1211/teehee-web-template/issues"
+  },
+  "homepage": "https://github.com/zz1211/teehee-web-template#readme",
   "dependencies": {
     "bunyan": "^1.8.12",
     "ip": "^1.1.5",
@@ -54,19 +69,4 @@
       "port": "8888"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zz1211/teehee-web-template.git"
-  },
-  "keywords": [
-    "teehee",
-    "web",
-    "template"
-  ],
-  "author": "zhongzhiqiang <zqzhong1211@163.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zz1211/teehee-web-template/issues"
-  },
-  "homepage": "https://github.com/zz1211/teehee-web-template#readme"
 }
