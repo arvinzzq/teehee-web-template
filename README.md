@@ -1,18 +1,25 @@
 # teehee-web-template
 
-### 注意
+## Development
+
+```javascript
+npm run start:dev -> start server side on dev mode
+npm run webpack:dev -> compile frontend code
+```
+
+## 注意
 
 本项目目前只是自用，并没有写单元测试。
 
-### Frontend side
+## Frontend side
 * client -> raw fred resource.
 * build -> compiled local fred resource. 
 * publish -> published fred resource (uploaded to cdn).
 
-### Server side
+## Server side
 * server -> raw server side code.
 * server_dist -> compiled server side code for production mode.
 
-### Static folder
+## Static folder
 
 * static
