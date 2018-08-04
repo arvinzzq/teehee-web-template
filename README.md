@@ -1,9 +1,20 @@
 # teehee-web-template
 
+A full-stack web template based on zeass and teehee.
+
+## Usage
+
+```javascript
+npm run publish -> compile server side code and frontend resouce
+
+npm run production -> start server side on production mode
+```
+
 ## Development
 
 ```javascript
 npm run start:dev -> start server side on dev mode
+
 npm run webpack:dev -> compile frontend code
 ```
 

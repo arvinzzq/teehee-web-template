@@ -11,8 +11,10 @@
     "webpack:dev": "webpack --config webpack.dev.js --mode development --watch",
     "start:prod:server": "start production mode server side",
     "webpack:prod": "webpack --config webpack.prod.js --mode production",
-    "publish:client": "publish client resource to cdn",
-    "publish:server": "compile server side code"
+    "publish:client": "npm run webpack:prod",
+    "publish:server": "babel server -d server_dist",
+    "publish": "npm run publish:client && npm run publish:server && bash publish.sh",
+    "production": "NODE_ENV=production node server_dist/app.js | bunyan --time local"
   },
   "keywords": [
   {{#each keywords}}
@@ -34,7 +36,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "nodemon": "^1.17.5",
-    "zeass": "0.0.5"
+    "zeass": "0.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

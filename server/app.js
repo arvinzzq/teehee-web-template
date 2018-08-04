@@ -29,7 +29,7 @@ app.use(koaStatic(process.cwd()));
 app.use(jsonMiddleware);
 app.use(codeMiddleware);
 app.use(bodyMiddleware());
-app.use(sessionMiddleware());
+app.use(sessionMiddleware('redis'));
 app.use(stateMiddleware);
 app.use(xssMiddleware({ enableStyle: true }));
 app.use(renderMiddleware({
