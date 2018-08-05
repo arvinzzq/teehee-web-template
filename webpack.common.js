@@ -10,11 +10,12 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
             presets:['env', 'stage-0', 'react'],
-            plugins: ["transform-decorators-legacy"]
+            plugins: ['transform-decorators-legacy', 'transform-runtime', 'transform-async-to-generator']
           }
         }
       }
