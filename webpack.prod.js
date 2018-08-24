@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HashPlugin = require('./HashPlugin');
+const HashCollectionPlugin = require('hash-collection-plugin');
 const commonConfig = require('./webpack.common.js')
 
 module.exports = merge(commonConfig, {
@@ -18,6 +18,6 @@ module.exports = merge(commonConfig, {
     new MiniCssExtractPlugin({
       filename: 'css/[name]_[contenthash].css'
     }),
-    new HashPlugin()
+    new HashCollectionPlugin()
   ]
 });
